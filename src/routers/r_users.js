@@ -11,8 +11,8 @@ const {
 } = require("../controllers/c_users");
 const {
   addcompany
-} = require("../controllers/c_company")
-const { uploadfile } = require("../controllers/c_request");
+} = require("../controllers/c_company");
+const { uploadfile, downloadfile } = require("../helpers/request");
 const { authentication, authAdmin } = require("../helpers/middleware/auth");
 const singleUploadProject = require("../helpers/middleware/profile");
 
@@ -26,6 +26,8 @@ routers
   .post("/logout", authentication, logout)
   .post("/company/register", authentication, addcompany)
   .post("/company/uploadFile", authentication, uploadfile)
+  .post("/company/downloadFile", authentication, downloadfile)
+
   // .get("/activate/:token/:email/:position/:access", activation)
   .get("/users", authentication, authAdmin, getAllUser)
   .get("/user/:id", authentication, getDetailUser)

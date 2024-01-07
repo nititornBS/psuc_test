@@ -4,11 +4,11 @@ const { envJWTKEY } = require('../env.js')
 module.exports = {
   authentication: (req, res, next) => {
     const authorization = req.headers.authorization
-    console.log({ authorization });
+    // console.log({ authorization });
     if (authorization) {
       // let token = authorization.split(" ")
       let token = authorization.split(" ")
-      console.log({ token });
+      // console.log({ token });
       jwt.verify(token[0], envJWTKEY, (error, decoded) => {
         if (!error) {
           res.access = decoded.access

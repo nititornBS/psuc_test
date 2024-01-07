@@ -26,6 +26,17 @@ module.exports = {
       });
     });
   },
+  addnewfile: (data) => {
+    return new Promise((resolve, reject) => {
+      pool.query("INSERT INTO company SET ?", data, (err, result) => {
+        if (!err) {
+          resolve(result);
+        } else {
+          reject(new Error(err));
+        }
+      });
+    });
+  },
   mDetailCompany: (id) => {
     return new Promise((resolve, reject) => {
       pool.query(`SELECT * FROM company WHERE id='${id}'`, (err, result) => {
